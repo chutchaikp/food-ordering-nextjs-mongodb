@@ -1,0 +1,28 @@
+.pizzaList {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  padding: 0 200px;
+
+  .listTitle {
+    h1 {
+      margin: 2rem;
+      font-size: 45px;
+      font-weight: bold;
+      text-align: center;
+      color: var();
+    }
+
+    p {
+      font-size: 1.25rem;
+      line-height: 1.75;
+    }
+  }
+
+  .items {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,64 @@
+@import '../Colors.scss';
+
+.featured {
+  height: calc(100vh - 100px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $bg-color;
+  position: relative;
+
+  overflow: hidden;
+
+  .leftArrow {
+    left: 0;
+    position: absolute;
+    // background-color: yellow;
+    cursor: pointer;
+    z-index: 9;
+    img {
+      width: 200px;
+      height: 200px;
+    }
+  }
+  .rightArrow {
+    right: 0;
+    position: absolute;
+    cursor: pointer;
+
+    img {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  // div:first-child {
+  //   width: 100px;
+  //   height: 100px;
+  // }
+
+  .wrapper {
+    width: 300vw;
+    height: 100%;
+    display: flex;
+    transition: all 1.5s ease-in-out;
+
+    div {
+      // background-color: rebeccapurple;
+      width: 100vw;
+      height: 100%;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      position: relative;
+
+      img {
+        width: 80%;
+        height: 80%;
+        object-fit: contain;
+      }
+    }
+  }
+}

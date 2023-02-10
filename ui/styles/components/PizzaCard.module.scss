@@ -1,0 +1,29 @@
+@import '../Colors.scss';
+
+.pizzaCard {
+  // flex: 1;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 40px;
+  cursor: pointer;
+
+  h1 {
+    font-size: 18px;
+    font-weight: bold;
+    color: $bg-color;
+  }
+
+  span {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--text-secondary);
+  }
+
+  p {
+    text-align: center;
+    color: #777;
+  }
+}
