@@ -2,13 +2,16 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-
   padding: 0 200px;
+
+  @media screen and (max-width: 480px) {
+    padding: 20px;
+  }
 
   .listTitle {
     h1 {
       margin: 2rem;
-      font-size: 45px;
+      font-size: 2rem;
       font-weight: bold;
       text-align: center;
       color: var();

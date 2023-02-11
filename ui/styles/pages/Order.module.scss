@@ -1,0 +1,117 @@
+@import '../Colors.scss';
+
+.order {
+  display: flex;
+  flex-direction: row;
+  padding: 50px;
+  @media screen and (max-width: 480px) {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .left {
+    flex: 2;
+
+    table {
+      border-spacing: 10px;
+      width: 100%;
+      text-align: left;
+      margin-bottom: 10px;
+
+      tr:first-child {
+        th {
+          color: $bg-color;
+        }
+        @media screen and (max-width: 480px) {
+          display: none;
+        }
+      }
+
+      tr {
+        @media screen and (max-width: 480px) {
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+    }
+
+    .statuss {
+      display: flex;
+      padding: 20px;
+      justify-content: space-between;
+      width: 80%;
+      @media screen and (max-width: 480px) {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .status {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .done {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .inProgress {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        animation: inProgress 1s ease infinite alternate;
+      }
+      .undone {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        opacity: 0.3;
+      }
+
+      @keyframes inProgress {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .inProgress > div,
+      .undone > div {
+        display: none;
+      }
+    }
+  }
+
+  .right {
+    flex: 1;
+
+    .wrapper {
+      padding: 10px 50px 50px 50px;
+      background-color: rgb(40, 39, 39);
+      color: white;
+      display: flex;
+      flex-direction: column;
+
+      h1 {
+        color: white;
+      }
+      div {
+        margin-bottom: 10px;
+      }
+      div > span {
+        margin-right: 10px;
+      }
+
+      button {
+        height: 30px;
+        color: $bg-color;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+    }
+  }
+}
