@@ -1,7 +1,12 @@
+import axios from 'axios';
 import Image from 'next/image';
 import styles from '../../styles/pages/Order.module.scss';
 
-const Order = () => {
+const Order = ({ order }) => {
+
+  debugger;
+  console.log(order)
+
   const status = 0;
   const statusClass = (index) => {
     if (index - status < 1) return styles.done;
@@ -12,18 +17,22 @@ const Order = () => {
     <div className={styles.order}>
       <div className={styles.left}>
         <table>
-          <tr>
-            <th>Order ID</th>
-            <th>Customer</th>
-            <th>Address</th>
-            <th>Total</th>
-          </tr>
-          <tr>
-            <td>123456789</td>
-            <td>John Doe</td>
-            <td>Elton st.212558 LA</td>
-            <td>$79.80</td>
-          </tr>
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Customer</th>
+              <th>Address</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{order._id}</td>
+              <td>{order.customer}</td>
+              <td>{order.address}</td>
+              <td>${order.total}</td>
+            </tr>
+          </tbody>
         </table>
 
         <div className={styles.statuss}>
@@ -67,13 +76,13 @@ const Order = () => {
           <h1>CART TOTAL</h1>
 
           <div className={styles.subtotal}>
-            <span>Subtotal: </span> $79.60
+            <span>Subtotal: </span> ${order.total}
           </div>
           <div className={styles.discount}>
             <span>Discount:</span> $0.00
           </div>
           <div className={styles.total}>
-            <span>Total: </span>$79.60
+            <span>Total: </span>${order.total}
           </div>
 
           <button>PAID!</button>
@@ -84,3 +93,14 @@ const Order = () => {
 };
 
 export default Order;
+
+export async function getServerSideProps({ params }) {
+  const { id } = params;
+  const res = await axios.get(`http://localhost:3000/api/orders/${id}`)
+
+  return {
+    props: {
+      order: res.data
+    }
+  }
+}

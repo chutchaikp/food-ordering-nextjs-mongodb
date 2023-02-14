@@ -54,7 +54,7 @@
     ul {
       list-style: none;
       display: flex;
-      justify-content: center;
+      justify-content: space-around;
       align-items: center;
       gap: 10px;
 
@@ -62,7 +62,7 @@
         color: white;
       }
       img {
-        width: 55px;
+        // width: 55px;
         height: 55px;
       }
     }
@@ -73,7 +73,7 @@
     display: flex;
     justify-content: flex-end;
 
-    .cart {
+    a > .cart {
       position: relative;
 
       img {

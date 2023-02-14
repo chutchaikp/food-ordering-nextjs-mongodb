@@ -1,16 +1,28 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { Inter } from '@next/font/google'
+
 // import styles from '@/styles/Home.module.css'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import styles from '../styles/About.module.scss'
 import Featured from '@/components/Featured'
 import PizzaList from '@/components/PizzaList'
+import axios from 'axios'
+import AddButton from '@/components/AddButton'
+import Add from '@/components/Add'
+import { useState } from 'react'
 
-const inter = Inter({ subsets: ['latin'] })
+// export default function Home({ data, }) {
 
-export default function Home() {
+//   return (
+//     <div>App</div>
+//   )
+// }
+
+export default function Home({ data, isAdmin, }) {
+
+  const [open, setOpen] = useState(false)
+
   return (
     <>
 
@@ -22,8 +34,29 @@ export default function Home() {
       </Head>
 
       <Featured />
-      <PizzaList />
+      {isAdmin && <> <AddButton setOpen={setOpen} /> </>}
+      <PizzaList pizzaList={data} />
+      {open && <>      <Add setOpen={setOpen} />      </>}
 
     </>
   )
+}
+
+// ngets
+
+export async function getServerSideProps(ctx) {
+  const myCookie = ctx.req?.cookies || ""
+  let isAdmin = false;
+  if (myCookie.token === process.env.TOKEN) {
+    isAdmin = true;
+  }
+  const url = 'http://localhost:3000/api/products';
+  const res = await axios.get(url)
+
+  return {
+    props: {
+      data: res.data,
+      isAdmin,
+    }
+  }
 }

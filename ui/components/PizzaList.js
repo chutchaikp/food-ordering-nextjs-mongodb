@@ -1,7 +1,7 @@
 import styles from '../styles/components/PizzaList.module.scss'
 import PizzaCard from './PizzaCard';
 
-const PizzaList = () => {
+const PizzaList = ({ pizzaList, }) => {
 	return (
 		<div className={styles.pizzaList}>
 			<div className={styles.listTitle}>
@@ -13,11 +13,10 @@ const PizzaList = () => {
 				</p>
 			</div>
 			<div className={styles.items}>
-				<PizzaCard />
-				<PizzaCard />
-				<PizzaCard />
-				<PizzaCard />
-				<PizzaCard />
+				{pizzaList.map(pizza =>
+					<PizzaCard key={pizza._id} pizza={pizza} />
+				)}
+
 			</div>
 		</div>
 	);

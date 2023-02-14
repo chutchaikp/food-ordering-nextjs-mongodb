@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+
+  .item {
+    flex: 1;
+    padding: 0 50px;
+
+    h1 {
+      font-weight: 200;
+    }
+
+    table {
+      border-spacing: 20px;
+    }
+  }
+}

@@ -19,6 +19,7 @@
         th {
           font-weight: bold;
           color: $bg-color;
+          text-align: left;
         }
         @media screen and (max-width: 480px) {
           display: none;
